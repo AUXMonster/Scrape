@@ -7,7 +7,8 @@ Grant the necessary capabilities to tcpdump and python3
 
 # Usage
 ## Commandline
-`usage: Flint2025-scrape [-h] -u URL [-W WIDTH] [-H HEIGHT] [-t TIMEOUT]
+```
+usage: Flint2025-scrape [-h] -u URL [-W WIDTH] [-H HEIGHT] [-t TIMEOUT]
 
 options:
   -h, --help            show this help message and exit
@@ -17,7 +18,8 @@ options:
   -H HEIGHT, --height HEIGHT
                         viewport height
   -t TIMEOUT, --timeout TIMEOUT
-                        page load timeout`
+                        page load timeout
+```
 
 This will print a JSON object-string to stdout
 `Flint2025-scrape -u https://example.com`
