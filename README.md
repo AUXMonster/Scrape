@@ -1,10 +1,13 @@
 # Installation
 Install the testPyPI package:
-`pip install Flint2025-scrape --index-url https://test.pypi.org/simple`
+```
+pip install Flint2025-scrape --index-url https://test.pypi.org/simple
+```
 Grant the necessary capabilities to tcpdump and python3
-`sudo setcap cap_net_raw=eip $(readlink -f $(which python3))`
-`sudo setcap cap_net_raw=eip $(readlink -f $(which tcpdump))`
-
+```
+sudo setcap cap_net_raw=eip $(readlink -f $(which python3))
+sudo setcap cap_net_raw=eip $(readlink -f $(which tcpdump))
+```
 # Usage
 ## Commandline
 ```
@@ -20,11 +23,14 @@ options:
   -t TIMEOUT, --timeout TIMEOUT
                         page load timeout
 ```
-
-This will print a JSON object-string to stdout
-`Flint2025-scrape -u https://example.com`
+This will print a JSON object-string to stdout:
+```
+Flint2025-scrape -u https://example.com
+```
 ## Python3 library
 This will return a Python dict
-`>>> from Flint2025_scrape import scrape`
-`>>> scrape('https://example.com', 1024, 1024, 1)`
+```
+>>> from Flint2025_scrape import scrape
+>>> scrape(url='https://example.com', width=1024, height=1024, timeout=60)
+```
 
