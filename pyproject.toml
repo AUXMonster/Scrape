@@ -4,4 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "Flint2025-scrape"
-version = "1.2"
+version = "1.6"
+
+[project.scripts]
+Flint2025-scrape = "__init__:main"

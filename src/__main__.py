@@ -20,4 +20,5 @@ def main():
 	record = safe_scrape(url.geturl(), args.width, args.height, args.timeout)
 	print(json.dumps(record))
 
-
+if __name__ == '__main__':
+	main()

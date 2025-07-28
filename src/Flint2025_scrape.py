@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import argparse
 import base64
 import datetime
 import io
@@ -16,15 +15,15 @@ import urllib.parse
 
 def scrape(url, width, height, timeout):
 	options = selenium.webdriver.chrome.options.Options()
-	#options.add_argument("--allow-running-insecure-content")
-	#options.add_argument('--disable-dev-shm-usage')
-	#options.add_argument("--disable-extensions")
+	options.add_argument("--allow-running-insecure-content")
+	options.add_argument('--disable-dev-shm-usage')
+	options.add_argument("--disable-extensions")
 	options.add_argument('--headless=new')
 	options.add_argument("--hide-scrollbars")
-	#options.add_argument("--ignore-certificate-errors")
+	options.add_argument("--ignore-certificate-errors")
 	#options.add_argument('--kiosk')
-	#options.add_argument("--no-default-browser-check")
-	#options.add_argument('--no-sandbox')
+	options.add_argument("--no-default-browser-check")
+	options.add_argument('--no-sandbox')
 	#options.add_argument(f'--ozone-override-screen-size={width},{height}')
 	#options.add_argument(f'--window-size={width},{height}')
 	#options.add_argument(f'--start-maximized')
@@ -100,18 +99,3 @@ def safe_scrape(*args, **kwargs):
 	except Exception as e:
 		record = {'success': False, 'message': str(e)}
 	return record
-
-if __name__ == '__main__':
-	parser = argparse.ArgumentParser()
-	parser.add_argument('-u', '--url', help='URL to scrape', required=True)
-	parser.add_argument('-W', '--width', help='viewport width', type=int, default=1920)
-	parser.add_argument('-H', '--height', help='viewport height', type=int, default=1080)
-	parser.add_argument('-t', '--timeout', help='page load timeout', type=int, default=60)
-	args = parser.parse_args()
-
-	url = urllib.parse.urlparse(args.url, scheme='https')
-	if not url.netloc:
-		url = url._replace(netloc = url.path, path = '')
-	
-	record = safe_scrape(url.geturl(), args.width, args.height, args.timeout)
-	print(json.dumps(record))
